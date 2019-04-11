@@ -10,9 +10,6 @@ import ua.epam.spring.hometask.domain.Event;
 import ua.epam.spring.hometask.domain.Ticket;
 import ua.epam.spring.hometask.domain.User;
 
-/**
- * @author Yuriy_Tkach
- */
 public interface BookingService {
 
     /**
@@ -52,5 +49,4 @@ public interface BookingService {
      * @return set of all purchased tickets
      */
     public @Nonnull Set<Ticket> getPurchasedTicketsForEvent(@Nonnull Event event, @Nonnull LocalDateTime dateTime);
-
 }

@@ -8,9 +8,6 @@ import javax.annotation.Nullable;
 import ua.epam.spring.hometask.domain.Event;
 import ua.epam.spring.hometask.domain.User;
 
-/**
- * @author Yuriy_Tkach
- */
 public interface DiscountService {
 
     /**
@@ -28,5 +25,4 @@ public interface DiscountService {
      * @return discount value from 0 to 100
      */
     byte getDiscount(@Nullable User user, @Nonnull Event event, @Nonnull LocalDateTime airDateTime, long numberOfTickets);
-
 }

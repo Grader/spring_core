@@ -6,12 +6,6 @@ import javax.annotation.Nonnull;
 
 import ua.epam.spring.hometask.domain.DomainObject;
 
-/**
- * @author Yuriy_Tkach
- *
- * @param <T>
- *            DomainObject subclass
- */
 public interface AbstractDomainObjectService<T extends DomainObject> {
 
     /**

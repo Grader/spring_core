@@ -5,9 +5,6 @@ import javax.annotation.Nullable;
 
 import ua.epam.spring.hometask.domain.Event;
 
-/**
- * @author Yuriy_Tkach
- */
 public interface EventService extends AbstractDomainObjectService<Event> {
 
     /**
@@ -39,5 +36,4 @@ public interface EventService extends AbstractDomainObjectService<Event> {
      * @return Set of events
      */
     // public @Nonnull Set<Event> getNextEvents(@Nonnull LocalDateTime to);
-
 }

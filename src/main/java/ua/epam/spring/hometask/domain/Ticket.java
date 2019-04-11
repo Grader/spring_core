@@ -3,9 +3,6 @@ package ua.epam.spring.hometask.domain;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-/**
- * @author Yuriy_Tkach
- */
 public class Ticket extends DomainObject implements Comparable<Ticket> {
 
     private User user;
@@ -92,4 +89,13 @@ public class Ticket extends DomainObject implements Comparable<Ticket> {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "user=" + user +
+                ", event=" + event +
+                ", dateTime=" + dateTime +
+                ", seat=" + seat +
+                '}';
+    }
 }

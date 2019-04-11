@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:auditorium.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="userDao" class="ua.epam.spring.hometask.dao.daoImpl.UserDaoImpl"/>
+
+    <bean id="userService" class="ua.epam.spring.hometask.service.serviceImpl.UserServiceImpl">
+        <constructor-arg ref="userDao"/>
+    </bean>
+
+    <bean id="auditoriumDao" class="ua.epam.spring.hometask.dao.daoImpl.AuditoriumDaoImpl">
+        <property name="auditoriumSet">
+            <set>
+                <ref bean="auditoriumRed"/>
+                <ref bean="auditoriumBlack"/>
+            </set>
+        </property>
+    </bean>
+
+    <bean id="auditoriumRed" class="ua.epam.spring.hometask.domain.Auditorium">
+        <property name="name" value="${auditoriumRed.name}"/>
+        <property name="vipSeats" value="#{'${auditoriumRed.vipSeats}'.split(',')}"/>
+        <property name="numberOfSeats" value="${auditoriumRed.numberOfSeats}"/>
+    </bean>
+
+    <bean id="auditoriumBlack" class="ua.epam.spring.hometask.domain.Auditorium">
+        <property name="name" value="${auditoriumBlack.name}"/>
+        <property name="vipSeats" value="#{'${auditoriumBlack.vipSeats}'.split(',')}"/>
+        <property name="numberOfSeats" value="${auditoriumBlack.numberOfSeats}"/>
+    </bean>
+
+    <bean id="auditoriumService" class="ua.epam.spring.hometask.service.serviceImpl.AuditoriumServiceImpl">
+        <constructor-arg ref="auditoriumDao"/>
+    </bean>
+
+    <bean id="eventDao" class="ua.epam.spring.hometask.dao.daoImpl.EventDaoImpl"/>
+
+    <bean id="eventService" class="ua.epam.spring.hometask.service.serviceImpl.EventServiceImpl">
+        <constructor-arg ref="eventDao"/>
+    </bean>
+
+</beans>

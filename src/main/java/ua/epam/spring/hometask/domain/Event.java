@@ -8,9 +8,6 @@ import java.util.Objects;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-/**
- * @author Yuriy_Tkach
- */
 public class Event extends DomainObject {
 
     private String name;
@@ -205,4 +202,14 @@ public class Event extends DomainObject {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "Event{" +
+                "name='" + name + '\'' +
+                ", airDates=" + airDates +
+                ", basePrice=" + basePrice +
+                ", rating=" + rating +
+                ", auditoriums=" + auditoriums +
+                '}';
+    }
 }
