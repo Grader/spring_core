@@ -31,16 +31,13 @@ public class EventTest {
 	@Test
 	public void testAddRemoveAirDates() {
 		int size = event.getAirDates().size();
-		
 		LocalDateTime date = LocalDateTime.now().plusDays(5);
 		
 		event.addAirDateTime(date);
-		
 		assertEquals(size+1, event.getAirDates().size());
 		assertTrue(event.getAirDates().contains(date));
 		
 		event.removeAirDateTime(date);
-		
 		assertEquals(size, event.getAirDates().size());
 		assertFalse(event.getAirDates().contains(date));		
 	}
@@ -66,37 +63,30 @@ public class EventTest {
 	@Test
 	public void testAddRemoveAuditoriums() {
 		LocalDateTime time = event.getAirDates().first();
-		
 		assertTrue(event.getAuditoriums().isEmpty());
 		
 		event.assignAuditorium(time, new Auditorium());
-		
 		assertFalse(event.getAuditoriums().isEmpty());
 		
 		event.removeAuditoriumAssignment(time);
-		
 		assertTrue(event.getAuditoriums().isEmpty());
 	}
 	
 	@Test
 	public void testAddRemoveAuditoriumsWithAirDates() {
 		LocalDateTime time = LocalDateTime.now().plusDays(10);
-		
 		assertTrue(event.getAuditoriums().isEmpty());
 		
 		event.addAirDateTime(time, new Auditorium());
-		
 		assertFalse(event.getAuditoriums().isEmpty());
 		
 		event.removeAirDateTime(time);
-		
 		assertTrue(event.getAuditoriums().isEmpty());
 	}
 	
 	@Test
 	public void testNotAddAuditoriumWithoutCorrectDate() {
 		LocalDateTime time = LocalDateTime.now().plusDays(10);
-		
 		boolean result = event.assignAuditorium(time, new Auditorium());
 		
 		assertFalse(result);
@@ -104,8 +94,6 @@ public class EventTest {
 		
 		result = event.removeAirDateTime(time);
 		assertFalse(result);
-		
 		assertTrue(event.getAuditoriums().isEmpty());
 	}
-
 }

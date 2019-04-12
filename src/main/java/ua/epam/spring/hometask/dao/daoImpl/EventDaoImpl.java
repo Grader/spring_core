@@ -3,7 +3,6 @@ package ua.epam.spring.hometask.dao.daoImpl;
 import ua.epam.spring.hometask.dao.EventDao;
 import ua.epam.spring.hometask.domain.DomainObject;
 import ua.epam.spring.hometask.domain.Event;
-import ua.epam.spring.hometask.domain.User;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -26,7 +25,9 @@ public class EventDaoImpl implements EventDao {
         if (!eventList.isEmpty()) {
             Long maxId = eventList.stream().max(Comparator.comparing(DomainObject::getId)).orElse(null).getId();
             event.setId(++maxId);
-        } else event.setId(0L);
+        } else {
+            event.setId(0L);
+        }
         eventList.add(event);
         return event;
     }

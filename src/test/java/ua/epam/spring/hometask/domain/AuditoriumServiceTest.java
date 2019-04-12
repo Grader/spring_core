@@ -18,8 +18,8 @@ public class AuditoriumServiceTest {
 
     @Before
     public void init() {
-        ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
-        auditoriumService = context.getBean(AuditoriumService.class);
+        ApplicationContext appContext = new ClassPathXmlApplicationContext("spring.xml");
+        auditoriumService = appContext.getBean(AuditoriumService.class);
     }
 
     @Test

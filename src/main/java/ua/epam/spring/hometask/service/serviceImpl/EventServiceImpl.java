@@ -2,10 +2,13 @@ package ua.epam.spring.hometask.service.serviceImpl;
 
 import ua.epam.spring.hometask.dao.EventDao;
 import ua.epam.spring.hometask.domain.Event;
+import ua.epam.spring.hometask.domain.User;
 import ua.epam.spring.hometask.service.EventService;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.time.LocalDateTime;
+import java.time.Period;
 import java.util.Collection;
 
 public class EventServiceImpl implements EventService {
