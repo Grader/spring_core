@@ -51,7 +51,7 @@
     </bean>
 
     <bean id="ticketDao" class="ua.epam.spring.hometask.dao.daoImpl.TicketDaoImpl"/>
-    
+
     <bean id="discountStrategy" class="ua.epam.spring.hometask.service.serviceImpl.DiscountStrategyImpl">
         <property name="discountForBirthday" value="5"/>
         <property name="differentOfDay" value="5"/>
@@ -69,7 +69,5 @@
         <constructor-arg ref="userService"/>
         <property name="riserForRating" value="1.2"/>
         <property name="riserForVip" value="2"/>
-
-</bean>
-
+    </bean>
 </beans>
