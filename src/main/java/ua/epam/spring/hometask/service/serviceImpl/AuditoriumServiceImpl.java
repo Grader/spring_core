@@ -6,7 +6,6 @@ import ua.epam.spring.hometask.service.AuditoriumService;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.Collection;
 import java.util.Set;
 
 public class AuditoriumServiceImpl implements AuditoriumService {

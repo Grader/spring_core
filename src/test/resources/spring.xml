@@ -50,4 +50,26 @@
         <constructor-arg ref="eventDao"/>
     </bean>
 
+    <bean id="ticketDao" class="ua.epam.spring.hometask.dao.daoImpl.TicketDaoImpl"/>
+    
+    <bean id="discountStrategy" class="ua.epam.spring.hometask.service.serviceImpl.DiscountStrategyImpl">
+        <property name="discountForBirthday" value="5"/>
+        <property name="differentOfDay" value="5"/>
+        <property name="discountForNumberTicket" value="50"/>
+        <property name="numberTicketForDiscount" value="10"/>
+    </bean>
+
+    <bean id="discountService" class="ua.epam.spring.hometask.service.serviceImpl.DiscountServiceImpl">
+        <constructor-arg ref="discountStrategy"/>
+    </bean>
+
+    <bean id="bookingService" class="ua.epam.spring.hometask.service.serviceImpl.BookingServiceImpl">
+        <constructor-arg ref="discountService"/>
+        <constructor-arg ref="ticketDao"/>
+        <constructor-arg ref="userService"/>
+        <property name="riserForRating" value="1.2"/>
+        <property name="riserForVip" value="2"/>
+
+</bean>
+
 </beans>

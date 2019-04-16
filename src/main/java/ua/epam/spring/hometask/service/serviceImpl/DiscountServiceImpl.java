@@ -13,6 +13,10 @@ public class DiscountServiceImpl implements DiscountService {
 
     private DiscountStrategy discountStrategy;
 
+    public DiscountServiceImpl(DiscountStrategy discountStrategy) {
+        this.discountStrategy = discountStrategy;
+    }
+
     @Override
     public byte getDiscount(@Nullable User user, @Nonnull Event event, @Nonnull LocalDateTime airDateTime,
                             long numberOfTickets) {
