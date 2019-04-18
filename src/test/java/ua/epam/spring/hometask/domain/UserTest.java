@@ -3,15 +3,12 @@ package ua.epam.spring.hometask.domain;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
+import ua.epam.spring.hometask.configuration.SpringConfiguration;
 import ua.epam.spring.hometask.service.UserService;
-import ua.epam.spring.hometask.service.serviceImpl.UserServiceImpl;
-
-import java.time.LocalDateTime;
 
 import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertTrue;
 
 @ContextConfiguration(locations = {"spring.xml"})
 public class UserTest {
@@ -26,7 +23,7 @@ public class UserTest {
     @Before
     public void initUser() {
 
-        ApplicationContext appContext = new ClassPathXmlApplicationContext("spring.xml");
+        ApplicationContext appContext = new AnnotationConfigApplicationContext(SpringConfiguration.class);
 
         userService = appContext.getBean(UserService.class);
 

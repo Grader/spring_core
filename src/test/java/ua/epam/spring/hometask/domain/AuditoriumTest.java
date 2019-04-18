@@ -1,24 +1,14 @@
 package ua.epam.spring.hometask.domain;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.test.context.ContextConfiguration;
-import ua.epam.spring.hometask.service.AuditoriumService;
+import static org.junit.Assert.assertEquals;
 
 public class AuditoriumTest {
-
-
 
     @Test
     public void testCountVips() {

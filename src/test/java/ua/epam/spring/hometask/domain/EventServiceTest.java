@@ -3,7 +3,8 @@ package ua.epam.spring.hometask.domain;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import ua.epam.spring.hometask.configuration.SpringConfiguration;
 import ua.epam.spring.hometask.service.EventService;
 
 import java.util.HashSet;
@@ -20,7 +21,7 @@ public class EventServiceTest {
 
     @Before
     public void init() {
-        ApplicationContext appContext = new ClassPathXmlApplicationContext("spring.xml");
+        ApplicationContext appContext = new AnnotationConfigApplicationContext(SpringConfiguration.class);
         eventService = appContext.getBean(EventService.class);
         eventService.save(createEvent());
     }

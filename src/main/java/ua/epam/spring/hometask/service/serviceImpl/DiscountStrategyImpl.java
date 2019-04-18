@@ -27,7 +27,7 @@ public class DiscountStrategyImpl implements DiscountStrategy {
     @Override
     public int getDiscountOfTenthTicket(User user, int numberOfTickets) {
 
-        if (user.getTickets().size() != 0) {
+        if (user != null && user.getTickets().size() != 0) {
             for (int i = 0; i < numberOfTickets; i++) {
                 if ((user.getTickets().size() + i) % numberTicketForDiscount == 0) {
                     return getDiscount(numberOfTickets + numberTicketForDiscount);

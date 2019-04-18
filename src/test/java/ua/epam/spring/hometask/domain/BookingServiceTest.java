@@ -3,7 +3,8 @@ package ua.epam.spring.hometask.domain;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import ua.epam.spring.hometask.configuration.SpringConfiguration;
 import ua.epam.spring.hometask.service.AuditoriumService;
 import ua.epam.spring.hometask.service.BookingService;
 
@@ -31,7 +32,7 @@ public class BookingServiceTest {
 
     @Before
     public void init() {
-        ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+        ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfiguration.class);
         bookingService = context.getBean(BookingService.class);
         auditoriumService = context.getBean(AuditoriumService.class);
     }
