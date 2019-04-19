@@ -6,6 +6,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import ua.epam.spring.hometask.configuration.SpringConfiguration;
 import ua.epam.spring.hometask.service.BookingService;
+import ua.epam.spring.hometask.service.DiscountService;
 import ua.epam.spring.hometask.service.EventService;
 
 import java.time.LocalDateTime;
@@ -52,9 +53,19 @@ public class AspectTest {
         Ticket ticket2 = new Ticket(null, event, EVENT_DATE_TIME, 6L);
         Ticket ticket3 = new Ticket(null, event, EVENT_DATE_TIME, 7L);
         bookingService.bookTickets(new HashSet<>(Arrays.asList(ticket, ticket2, ticket3)));
+
+        System.out.println("\n\n\n-------------TEST GET_DISCOUNT-------------------------------");
+
+        DiscountService discountService =appContext.getBean("discountService", DiscountService.class);
+        discountService.getDiscount(new User(), event, EVENT_DATE_TIME, 5L);
     }
 
     @Test
     public void testCounterAspect() {
+    }
+
+    @Test
+    public void testDiscountAspect() {
+
     }
 }

@@ -3,14 +3,12 @@ package ua.epam.spring.hometask.aspects;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import ua.epam.spring.hometask.dao.CounterDao;
 import ua.epam.spring.hometask.dao.daoImpl.CounterDaoImpl;
 import ua.epam.spring.hometask.domain.Event;
 import ua.epam.spring.hometask.domain.Ticket;
 
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -57,12 +55,12 @@ public class CounterAspect {
         Object[] arguments = joinPoint.getArgs();
         Set<Ticket> tickets = (Set<Ticket>) arguments[0];
         Iterator<Ticket> ticketsIterator = tickets.iterator();
-        String eventName = null;
+        String eventName;
         while (ticketsIterator.hasNext()) {
             eventName = ticketsIterator.next().getEvent().getName();
             counterDao.incrementCounter(eventName);
+            System.out.println(String.format("[ASPECT]: %s tickets were booked %dth", eventName, counterDao
+                    .getCounter(eventName)));
         }
-        System.out.println(String.format("[ASPECT]: %s, tickets were booked %dth", eventName, counterDao
-                .getCounter(eventName)));
     }
 }

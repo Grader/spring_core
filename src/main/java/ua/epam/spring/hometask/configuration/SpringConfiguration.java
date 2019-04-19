@@ -7,6 +7,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import ua.epam.spring.hometask.aspects.CounterAspect;
+import ua.epam.spring.hometask.aspects.DiscountAspect;
 import ua.epam.spring.hometask.dao.*;
 import ua.epam.spring.hometask.dao.daoImpl.*;
 import ua.epam.spring.hometask.domain.Auditorium;
@@ -144,5 +145,10 @@ public class SpringConfiguration {
     @Bean
     CounterAspect counterAspect() {
         return new CounterAspect();
+    }
+
+    @Bean
+    DiscountAspect discountAspect() {
+        return new DiscountAspect();
     }
 }
