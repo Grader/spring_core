@@ -1,10 +1,7 @@
 package ua.epam.spring.hometask.configuration;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import ua.epam.spring.hometask.aspects.CounterAspect;
 import ua.epam.spring.hometask.aspects.DiscountAspect;
@@ -12,8 +9,6 @@ import ua.epam.spring.hometask.dao.*;
 import ua.epam.spring.hometask.dao.daoImpl.*;
 import ua.epam.spring.hometask.domain.Auditorium;
 import ua.epam.spring.hometask.domain.Event;
-import ua.epam.spring.hometask.domain.EventRating;
-import ua.epam.spring.hometask.domain.Ticket;
 import ua.epam.spring.hometask.service.*;
 import ua.epam.spring.hometask.service.serviceImpl.*;
 
@@ -21,6 +16,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Configuration
+@Import(DbConfiguration.class)
 @EnableAspectJAutoProxy
 @PropertySource(
         value = {"classpath:${property:auditorium}.properties"},

@@ -1,27 +1,37 @@
 package ua.epam.spring.hometask.dao.daoImpl;
 
+import org.springframework.jdbc.core.JdbcTemplate;
 import ua.epam.spring.hometask.dao.CounterDao;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 public class CounterDaoImpl implements CounterDao {
 
-    private Map<String, Integer> counterStorage = new HashMap<>();
+    private JdbcTemplate jdbcTemplate;
 
     @Override
     public void incrementCounter(String counterName) {
-        if(!counterStorage.containsKey(counterName)){
-            counterStorage.put(counterName, 0);
+        List name = jdbcTemplate
+                .queryForObject("SELECT NAMECOUNTER FROM ASPECTSCOUNTER WHERE NAMECOUNTER = ?", List.class);
+        Integer count = jdbcTemplate
+                .queryForObject("SELECT NUMBERCOUNT FROM ASPECTSCOUNTER WHERE NAMECOUNTER = ?", Integer.class);
+        if (!(name != null && name.contains(counterName))) {
+            jdbcTemplate
+                    .update("INSERT INTO ASPECTSCOUNTER (NAMECOUNTER, NUMBERCOUNT) VALUES (?, ?)", counterName, 0);
         }
-        counterStorage.put(counterName, counterStorage.get(counterName) + 1);
+        jdbcTemplate
+                .update("INSERT INTO ASPECTSCOUNTER (NAMECOUNTER, NUMBERCOUNT) VALUES (?, ?)", counterName, count + 1);
     }
 
     @Override
-    public int getCounter(String counterName) {
-        if(counterStorage.containsKey(counterName)){
-            return counterStorage.get(counterName);
+    public Integer getCounter(String counterName) {
+        String name = jdbcTemplate
+                .queryForObject("SELECT NAMECOUNTER FROM ASPECTSCOUNTER WHERE NAMECOUNTER = ?", String.class);
+        if (counterName.equals(name)) {
+            return jdbcTemplate
+                    .queryForObject("SELECT NUMBERCOUNT FROM ASPECTSCOUNTER WHERE NAMECOUNTER = ?", Integer.class);
         }
         return 0;
     }
 }
+
